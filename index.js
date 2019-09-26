@@ -17,7 +17,6 @@ fs.createReadStream('data/players.csv')
     if (!rowCount) {
       header = data;
     } else {
-      // console.log(Array.isArray( data), data);
       let row = {};
       data.map((data, i) => {
         row[header[i]] = data;
@@ -25,7 +24,6 @@ fs.createReadStream('data/players.csv')
       rows.push(row);
     }
     rowCount++;
-    // console.log('Name: %s ID: %s', data.firstName + " " + data.lastName, data.playerId)
 })
 
 app.use(function(req, res, next) {
@@ -35,23 +33,18 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/players', function(req, res) {
-
   res.json(rows.map(row => { return { name: row.name, id: row.playerId }}));
-
 });
 
 app.get('/api/player/:id', function(req, res) {
-
   let returner = rows.filter(row => {
     return row.playerId == req.params.id
   })
-
   if (returner.length) {
     res.json(returner);
   } else {
     res.status(404).send("player not found");
   }
-
 });
 
 app.listen(port, address, function(err) {
