@@ -9,7 +9,7 @@
   "author": "flote",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^2.4.0",
+    "csv-parse": "^4.6.5",
     "express": "^4.16.3"
   }
 }
